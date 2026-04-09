@@ -7,8 +7,9 @@ import { validateSymbol } from './validators';
 
 // Internal base URL for server-side calls within Next.js
 function getBaseUrl(): string {
-  // On the server, we need an absolute URL for fetch()
   if (typeof window === 'undefined') {
+    if (process.env.VERCEL_PROJECT_PRODUCTION_URL) return `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+    if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
     return process.env.NEXTAUTH_URL || process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
   }
   return '';
