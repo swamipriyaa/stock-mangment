@@ -5,7 +5,7 @@ const yahooFinance = new YahooFinance({ suppressNotices: ['yahooSurvey'] });
 
 export const dynamic = 'force-dynamic';
 
-const BACKEND_URL = process.env.BACKEND_API_URL || process.env.NEXT_PUBLIC_BACKEND_API_URL || 'http://127.0.0.1:8080';
+const BACKEND_URL = 'https://stock-mangment.onrender.com';
 
 // Push price data to Java backend asynchronously (for DB caching + alert checks)
 async function pushToBackend(data: {
